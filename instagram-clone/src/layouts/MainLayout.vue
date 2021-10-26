@@ -2,42 +2,42 @@
   <q-layout view="lHh Lpr lFf">
     <q-header class="bg-white text-grey-10">
       <q-toolbar>
+        <q-btn
+          to="/camera"
+          flat
+          round
+          dense
+          color="primary"
+          icon="camera"
+          size="18px"
+        />
 
-          <q-footer class="bg-white" bordered>
-            <q-tabs class="text-grey-10" active-color="primary" indicator-color="transparent">
-              <q-route-tab to="/" name="home" icon="mail" />
-              <q-route-tab to="/camera" name="home" icon="alarm" /> 
-            </q-tabs>
-          </q-footer>
+        <q-toolbar-title> Instagram </q-toolbar-title>
+      </q-toolbar>
+    </q-header>
 
-        <q-toolbar-title>
-          Instagram
-          </q-toolbar-title>
-
-        </q-toolbar>
-      </q-header>
-
-   
-
-    <q-page-container>
+    <q-footer class="bg-white" bordered>
+      <q-tabs class="text-grey-10" indicator-color="transparent">
+        <q-route-tab to="/" name="home" icon="home" />
+        <q-route-tab to="/camera" name="camera" icon="camera" />
+      </q-tabs>
+    </q-footer>
+    <q-page-container class="bg-grey-1">
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: 'MainLayout',
+  name: "MainLayout",
 
-  data () {
-    return {
-
-    }
-  }
-})
+  data() {
+    return {};
+  },
+});
 </script>
 
 
@@ -47,5 +47,4 @@ export default defineComponent({
 .q-footer
   .q-tab__icon
     font-size: 30px
-
 </style>
