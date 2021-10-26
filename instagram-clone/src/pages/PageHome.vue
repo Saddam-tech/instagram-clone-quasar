@@ -1,7 +1,7 @@
 <template>
   <q-page class="constrains q-pa-md">
     <q-card
-      class="card-post"
+      class="card-post q-mb-md"
       v-for="post in posts"
       :key="post.id"
       flat
@@ -16,14 +16,14 @@
 
         <q-item-section>
           <q-item-label class="text-bold">Saddam Salokhiddinov </q-item-label>
-          <q-item-label caption> Seoul, South Korea </q-item-label>
+          <q-item-label caption>{{ post.location }}</q-item-label>
         </q-item-section>
       </q-item>
-      <q-img class="col-5" src="https://cdn.quasar.dev/img/parallax2.jpg" />
+      <q-img class="col-5" :src="post.imageUrl" />
       <q-separator />
       <q-card-section>
-        <div class="text-caption">Golden Gate Bridge</div>
-        <div class="text-grey">October 27, 2021</div>
+        <div class="text-caption">{{ post.caption }}</div>
+        <div class="text-grey">{{ post.date }}</div>
       </q-card-section>
     </q-card>
   </q-page>
