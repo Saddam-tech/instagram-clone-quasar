@@ -1,36 +1,61 @@
 <template>
   <q-page class="constrains q-pa-md">
-    <q-card
-      class="card-post q-mb-md"
-      v-for="post in posts"
-      :key="post.id"
-      flat
-      bordered
-    >
-      <q-item>
-        <q-item-section avatar>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
-          </q-avatar>
-        </q-item-section>
+    <div class="row q-col-gutter-lg">
+      <div class="col-12 col-sm-8">
+        <q-card
+          class="card-post q-mb-md"
+          v-for="post in posts"
+          :key="post.id"
+          flat
+          bordered
+        >
+          <div class="col-4">
+            <q-item>
+              <q-item-section avatar>
+                <q-avatar>
+                  <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+                </q-avatar>
+              </q-item-section>
 
-        <q-item-section>
-          <q-item-label class="text-bold">Saddam Salokhiddinov </q-item-label>
-          <q-item-label caption>{{ post.location }}</q-item-label>
-        </q-item-section>
-      </q-item>
-      <q-img class="col-5" :src="post.imageUrl" />
-      <q-separator />
-      <q-card-section>
-        <div class="text-caption">{{ post.caption }}</div>
-        <div class="text-grey">{{ post.date }}</div>
-      </q-card-section>
-    </q-card>
+              <q-item-section>
+                <q-item-label class="text-bold"
+                  >Saddam Salokhiddinov
+                </q-item-label>
+                <q-item-label caption>{{ post.location }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </div>
+          <q-img class="col-5" :src="post.imageUrl" />
+          <q-separator />
+          <q-card-section>
+            <div class="text-caption">{{ post.caption }}</div>
+            <div class="text-caption text-grey">
+              {{ post.date }}
+            </div>
+          </q-card-section>
+        </q-card>
+      </div>
+      <div class="col-4">
+        <q-item class="fixed">
+          <q-item-section avatar>
+            <q-avatar size="48px">
+              <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+            </q-avatar>
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label class="text-bold">Saddam Salokhiddinov </q-item-label>
+            <q-item-label caption>Software engineer</q-item-label>
+          </q-item-section>
+        </q-item>
+      </div>
+    </div>
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from "vue";
+import { date } from "quasar";
 
 export default defineComponent({
   name: "PageHome",
@@ -68,7 +93,10 @@ export default defineComponent({
       ],
     };
   },
+  filters: {
+    niceDate(value) {
+      return date.formatDate(value, "YYYY-MM-DDTHH:mm:ss.SSSZ");
+    },
+  },
 });
 </script>
-
-  
