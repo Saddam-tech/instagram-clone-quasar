@@ -57,7 +57,13 @@
         </q-input>
       </div>
       <div class="row justify-center q-mt-lg">
-        <q-btn color="primary" label="Post image" rounded unelevated />
+        <q-btn
+          color="primary"
+          label="Post image"
+          @click="addPost()"
+          rounded
+          unelevated
+        />
       </div>
     </div>
   </q-page>
@@ -95,6 +101,23 @@ export default defineComponent({
         })
         .catch((error) => {
           this.hasCameraSupport = false;
+        });
+    },
+    addPost() {
+      let formData = new FormData();
+      formData.append("id", this.post.id);
+      formData.append("caption", this.post.caption);
+      formData.append("location", this.post.location);
+      formData.append("date", this.post.date);
+      formData.append("file", this.post.photo, this.post.id + ".png");
+
+      this.$axios
+        .post(`http://localhost:3000/createPost`, formData)
+        .then((response) => {
+          console.log("response: ", response);
+        })
+        .catch((err) => {
+          console.log("error: ", err);
         });
     },
     captureImage() {
